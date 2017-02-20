@@ -1,0 +1,29 @@
+:host {
+  font-size: 0;
+}
+:host.star-48 {
+
+}
+
+.star-item {
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+.star-48 .star-item {
+  width: 20px;
+  height: 20px;
+  margin-right: 22px;
+  background-size: 20px 20px !important;
+}
+.star-48 .star-item:last-child {
+  margin-right: 0;
+}
+.star-48 .star-item.on {
+  background: url('./img/star48_on@2x.png');
+}
+.star-48 .star-item.half {
+  background: url('./img/star48_half@2x.png');
+}
+.star-48 .star-item.off {
+  background: url('./img/star48_off@2x.png');
+}
