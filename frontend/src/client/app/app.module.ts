@@ -4,6 +4,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll/angular2-infinite-scroll';
 
 import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
@@ -11,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, SharedModule.forRoot(), CoreModule],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, SharedModule.forRoot(), CoreModule, InfiniteScrollModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

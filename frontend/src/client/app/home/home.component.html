@@ -1,10 +1,81 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
-
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
-
-<ul>
-  <li *ngFor="let name of names">{{name}}</li>
-</ul>
+<div class="menu-wrapper" #menuwrapper>
+    <ul id="scroller">
+        <li *ngFor="let item of goods; let i=index" class="menu-item" [class.current]="_currentIndex()===i" (click)="selectMenu(i, $event)">
+            <span class="text">
+        <span *ngIf="item['type']>0" class="icon" [ngClass]="classMap[item['type']]" ></span>{{item['name']}}
+            </span>
+        </li>
+        <!--<li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>
+        <li class="menu-item">
+            <span class="text">
+        <span class="icon"></span>三大
+            </span>
+        </li>-->
+    </ul>
+</div>
+<div class="foods-wrapper" #foodswrapper>
+    <ul>
+        <li *ngFor="let item of goods; let i=index" class="food-list food-list-hook" #foodlists>
+            <h1 class="title">{{item['name']}}</h1>
+            <ul>
+                <li *ngFor="let food of item['foods']" class="food-item">
+                    <div class="icon">
+                        <img width="57" height="57" [src]="food['icon']" alt="">
+                    </div>
+                    <div class="content">
+                        <h2 class="name">{{food['name']}}</h2>
+                        <p class="desc">{{food['description']}}</p>
+                        <div class="extra">
+                            <span class="count">月售{{food['sellCount']}}份</span>
+                            <span>好评率{{food['rating']}}%</span>
+                        </div>
+                        <div class="price">
+                            <span class="now">￥{{food['price']}}</span>
+                            <span class="old" *ngIf="food['oldPrice']">￥{{food['oldPrice']}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!--<button type="button" (click)="_initScroll()">初始化</button>-->
