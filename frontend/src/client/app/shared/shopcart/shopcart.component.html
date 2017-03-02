@@ -1,0 +1,17 @@
+<div class="shopcart">
+    <div class="content">
+        <div class="content-left">
+            <div class="logo-wrapper">
+                <div class="logo" [class.highlight]="totalCount>0">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="num" *ngIf="totalCount>0">99</div>
+            </div>
+            <div class="price" [class.highlight]="totalCount>0">￥0</div>
+            <div class="desc">另需配送费￥{{seller.deliveryPrice}}元</div>
+        </div>
+        <div class="content-right">
+            <div class="pay">￥{{seller.minPrice}}元起送</div>
+        </div>
+    </div>
+</div>

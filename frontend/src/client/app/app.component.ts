@@ -15,6 +15,7 @@ import { SellerModel } from './shared/models/seller.model';
 export class AppComponent implements OnInit {
   private seller:SellerModel;
 
+
   constructor(private sellerService:SellerService) {
     console.log('Environment config', Config);
   }
@@ -28,4 +29,5 @@ export class AppComponent implements OnInit {
       error => console.log(error)
     );
   }
+
 }

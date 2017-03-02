@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit{
   detailHidden: boolean = true;
   constructor(){
     this.classMap = ['decrease','discount','special','invoice','guarantee'];
-  }
+}
 
   ngOnInit(){
 

@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/index';
 import { NavbarComponent } from './navbar/index';
-
+import { ShopcartComponent } from './shopcart/index';
 import { StarComponent } from './star/star.component';
 
 /**
@@ -14,9 +14,9 @@ import { StarComponent } from './star/star.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  declarations: [HeaderComponent, NavbarComponent, StarComponent],
+  declarations: [HeaderComponent, NavbarComponent, StarComponent, ShopcartComponent],
   exports: [HeaderComponent, NavbarComponent, StarComponent,
-    CommonModule, FormsModule, RouterModule]
+    CommonModule, FormsModule, RouterModule, ShopcartComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

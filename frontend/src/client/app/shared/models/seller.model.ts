@@ -1,3 +1,5 @@
+import { SupportModel } from './support.model';
+
 export interface SellerModel {
   name: string;
   description: string;
@@ -11,7 +13,7 @@ export interface SellerModel {
   ratingCount: number;
   sellCount: number;
   bulletin: string;
-  supports:any[];
+  supports:SupportModel[];
   avatar: string;
   pics: any[];
   infos: any[]
