@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/index';
 import { NavbarComponent } from './navbar/index';
 import { ShopcartComponent } from './shopcart/index';
 import { StarComponent } from './star/star.component';
+import { CartcontrolComponent } from './cartcontrol/cartcontrol.component';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -14,9 +15,9 @@ import { StarComponent } from './star/star.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  declarations: [HeaderComponent, NavbarComponent, StarComponent, ShopcartComponent],
+  declarations: [HeaderComponent, NavbarComponent, StarComponent, ShopcartComponent, CartcontrolComponent],
   exports: [HeaderComponent, NavbarComponent, StarComponent,
-    CommonModule, FormsModule, RouterModule, ShopcartComponent]
+    CommonModule, FormsModule, RouterModule, ShopcartComponent, CartcontrolComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

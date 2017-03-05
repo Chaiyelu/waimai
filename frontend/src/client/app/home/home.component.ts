@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, AfterViewChecked, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnChanges, SimpleChanges, AfterViewChecked, EventEmitter } from '@angular/core';
 import { GoodsService } from '../core/service/goods.service';
 import { GoodModel } from '../shared/models/good.model';
 //import { Iscroll } from '../core/directive/iscroll.directive';
@@ -11,26 +11,33 @@ import * as BScroll from 'better-scroll/build/bscroll';
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
 })
-export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
-  private goods:GoodModel[];
-  private classMap:String[];
-  private allowInitScroll:boolean = false;
+export class HomeComponent implements OnInit, OnChanges, AfterViewChecked {
+  private goods: GoodModel[];
+  private classMap: String[];
+  private allowInitScroll: boolean = false;
   private BScroll: any;
-  private listHeight:number[] = [];
-  private scrollY:number = 0;
-  @ViewChild('menuwrapper') menuWrapper:ElementRef;
-  @ViewChild('foodswrapper') foodsWrapper:ElementRef;
-  @ViewChild('foodlists') foodsLists:ElementRef;
-  private menuScroll:any;
-  private foodsScroll:any;
+  private listHeight: number[] = [];
+  private scrollY: number = 0;
+  @ViewChild('menuwrapper') menuWrapper: ElementRef;
+  @ViewChild('foodswrapper') foodsWrapper: ElementRef;
+  @ViewChild('foodlists') foodsLists: ElementRef;
+  private menuScroll: any;
+  private foodsScroll: any;
+  private selectedFoods: any[];
 
-  constructor(private goodsService:GoodsService) {
-    this.classMap = ['decrease','discount','special','invoice','guarantee'];
+  constructor(private goodsService: GoodsService) {
+    this.goods = [];
+    this.selectedFoods = [];
+    this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
   }
 
   /**
    * 获取所有物品
    */
+  ngOnChanges(changes: SimpleChanges) {
+
+  }
+
   ngOnInit() {
     this.goodsService.getGoods().subscribe(
       goods => {
@@ -45,39 +52,38 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     //this.bscroll.nativeElement.style.backgroundColor = 'yellow';
   }
 
-  ngAfterViewInit() {
-    // this._initScroll();
-
-  }
   ngAfterViewChecked() {
-    if(this.allowInitScroll){
+    if (this.allowInitScroll) {
       this._initScroll();
       this._calculateHeight();
     }
     this.allowInitScroll = false;
     this._currentIndex();
+    //console.log(this.goods);
+
   }
 
-  _initScroll(){
+  _initScroll() {
     this.menuScroll = new BScroll(this.menuWrapper.nativeElement, {
       click: true
     });
     this.foodsScroll = new BScroll(this.foodsWrapper.nativeElement, {
+      click: true,
       probeType: 3
     });
 
-    this.foodsScroll.on('scroll', (pos) => {
+    this.foodsScroll.on('scroll', (pos: any) => {
       this.scrollY = Math.abs(Math.round(pos.y));
     });
 
   }
 
-  _calculateHeight(){
+  _calculateHeight() {
     let foodLists = this.foodsWrapper.nativeElement.getElementsByClassName('food-list-hook');
     console.log(foodLists);
     let height = 0;
     this.listHeight.push(height);
-    for(let i = 0;i < foodLists.length;i++){
+    for (let i = 0; i < foodLists.length; i++) {
       let item = foodLists[i];
       height += item.clientHeight;
       this.listHeight.push(height);
@@ -85,10 +91,10 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     console.log(this.listHeight);
   }
 
-  _currentIndex(){
-    for(let i =0; i < this.listHeight.length; i++){
+  _currentIndex() {
+    for (let i = 0; i < this.listHeight.length; i++) {
       let height1 = this.listHeight[i];
-      let height2 = this.listHeight[i+1];
+      let height2 = this.listHeight[i + 1];
       if ((this.scrollY >= height1 && this.scrollY < height2)) {
         return i;
       }
@@ -96,7 +102,7 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     return 0;
   }
 
-  selectMenu(index:number,event:EventListener){
+  selectMenu(index: number, event: EventListener) {
     if (!event._constructed) {
       return;
     }
@@ -104,5 +110,18 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     let el = foodLists[index];
     this.foodsScroll.scrollToElement(el, 300);
     console.log(index);
+  }
+
+  selectFoods(){
+    let foods:any[] = [];
+    this.goods.forEach((good) => {
+      good.foods.forEach((food) => {
+        if (food.count) {
+          foods.push(food);
+        }
+      })
+    });
+    this.selectedFoods = foods;
+    console.log(this.selectedFoods);
   }
 }

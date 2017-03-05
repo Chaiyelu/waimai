@@ -27,7 +27,7 @@
 <div class="background">
     <img [src]="seller['avatar']" alt="">
 </div>
-<div class="detail" [class.hidden]="detailHidden">
+<div class="detail" *ngIf="detailShow" [@flyIn]="detailHidden">
     <div class="detail-wrapper clearfix">
         <div class="detail-main">
             <h1 class="name">{{seller['name']}}</h1>

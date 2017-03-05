@@ -27,10 +27,13 @@
                             <span class="now">￥{{food['price']}}</span>
                             <span class="old" *ngIf="food['oldPrice']">￥{{food['oldPrice']}}</span>
                         </div>
+                        <div class="cartcontrol-wrapper">
+                            <cartcontrol [food]="food" (selectFoodsEmit)="selectFoods($event)"></cartcontrol>
+                        </div>
                     </div>
                 </li>
             </ul>
         </li>
     </ul>
 </div>
-<wm-shopcart></wm-shopcart>
+<wm-shopcart [selectedFoods]="selectedFoods" (selectFoodsEmit)="selectFoods($event)"></wm-shopcart>
