@@ -4,6 +4,7 @@ import { GoodModel } from '../shared/models/good.model';
 //import { Iscroll } from '../core/directive/iscroll.directive';
 //import * as IScroll from 'iscroll/build/iscroll';
 import * as BScroll from 'better-scroll/build/bscroll';
+import { FoodComponent } from '../shared/food/food.component';
 
 @Component({
   moduleId: module.id,
@@ -12,22 +13,27 @@ import * as BScroll from 'better-scroll/build/bscroll';
   styleUrls: ['home.component.css'],
 })
 export class HomeComponent implements OnInit, OnChanges, AfterViewChecked {
+  @ViewChild('menuwrapper') menuWrapper: ElementRef;
+  @ViewChild('foodswrapper') foodsWrapper: ElementRef;
+  @ViewChild('foodlists') foodsLists: ElementRef;
+  @ViewChild(FoodComponent)
+  private foodComponent:FoodComponent;
+
   private goods: GoodModel[];
   private classMap: String[];
   private allowInitScroll: boolean = false;
   private BScroll: any;
   private listHeight: number[] = [];
   private scrollY: number = 0;
-  @ViewChild('menuwrapper') menuWrapper: ElementRef;
-  @ViewChild('foodswrapper') foodsWrapper: ElementRef;
-  @ViewChild('foodlists') foodsLists: ElementRef;
   private menuScroll: any;
   private foodsScroll: any;
   private selectedFoods: any[];
+  private selectFood: object;
 
   constructor(private goodsService: GoodsService) {
     this.goods = [];
     this.selectedFoods = [];
+    this.selectFood = {};
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
   }
 
@@ -43,12 +49,14 @@ export class HomeComponent implements OnInit, OnChanges, AfterViewChecked {
       goods => {
         this.goods = goods;
         this.allowInitScroll = true;
+        this.selectFood = goods[0].foods[0];
         console.log(111);
 
         //let scroll =new BScroll(this.bscroll.nativeElement);
       },
       error => console.log(error)
     )
+
     //this.bscroll.nativeElement.style.backgroundColor = 'yellow';
   }
 
@@ -123,5 +131,14 @@ export class HomeComponent implements OnInit, OnChanges, AfterViewChecked {
     });
     this.selectedFoods = foods;
     console.log(this.selectedFoods);
+  }
+
+  onSelectFood(food:object,event:EventListener){
+    if (!event._constructed) {
+      return;
+    }
+    console.log(food);
+    this.foodComponent.isShow();
+    this.selectFood = food;
   }
 }

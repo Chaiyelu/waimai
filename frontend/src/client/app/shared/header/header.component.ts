@@ -1,6 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { SellerModel } from '../models/seller.model';
-import { flyIn } from '../../animations/fly-in';
+import { flyIn } from '../../core/animations/fly-in';
 
 @Component({
   moduleId: module.id,

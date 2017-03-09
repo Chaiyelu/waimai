@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges, AfterViewChecked, Input, Output, EventEmi
 import { SellerService } from '../../core/service/seller.service';
 import { SellerModel } from '../models/seller.model';
 import { FoodModel } from '../models/food.model';
-import { fold, fade } from '../../animations/fold';
+import { fold, fade } from '../../core/animations/fold';
 import * as BScroll from 'better-scroll/build/bscroll';
 
 @Component({

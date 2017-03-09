@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges ,Input, Output, EventEmitter } from '@angular/core';
-import { moveIn, roll } from '../../animations/fly-in';
+import { moveIn, roll } from '../../core/animations/fly-in';
 
 @Component({
   moduleId: module.id,
@@ -37,7 +37,8 @@ export class CartcontrolComponent implements OnInit {
     //console.log(this.food);
   }
 
-  addCart(event: EventListener) {
+  addCart() {
+    event.stopPropagation();
     if (!event._constructed) {
       return;
     }
@@ -50,7 +51,8 @@ export class CartcontrolComponent implements OnInit {
     console.log(this.food);
   }
 
-  decreaseCart(event: EventListener) {
+  decreaseCart() {
+    event.stopPropagation();
     if (!event._constructed) {
       return;
     }
