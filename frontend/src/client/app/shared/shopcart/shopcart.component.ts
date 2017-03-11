@@ -48,7 +48,7 @@ export class ShopcartComponent implements OnInit, OnChanges, AfterViewChecked {
       },
       error => console.log(error)
     );
-
+    console.log(this.selectedFoods);
   }
 
   ngAfterViewChecked(){

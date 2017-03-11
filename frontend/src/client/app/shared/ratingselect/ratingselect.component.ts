@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 const POSITIVE = 0;
 const NEGATIVE = 1;
@@ -14,13 +14,16 @@ const ALL = 2;
 export class RatingselectComponent implements OnInit, OnChanges {
   @Input() ratings: Array<any> = [];
   @Input() selectType: number = ALL;
-  @Input() onlyContent: boolean = false;
+  @Input() onlyContent: boolean;
   @Input() desc: object = { all: '全部', positive: '满意', negative: '不满意' };
+  @Output() typeSelect = new EventEmitter();
+  @Output() contentToggle = new EventEmitter();
   private ratingspt: Array<any>;
   private ratingsnt: Array<any>;
 
   constructor() {
     console.log(this.ratings);
+    this.onlyContent = false;
   }
 
   ngOnChanges() {
@@ -34,7 +37,7 @@ export class RatingselectComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     //this.desc = { all: '全部', positive: '满意', negative: '不满意' };
-    this.onlyContent = false;
+    //this.onlyContent = false;
 
   }
 
@@ -43,6 +46,7 @@ export class RatingselectComponent implements OnInit, OnChanges {
       return;
     }
     this.selectType = type;
+    this.typeSelect.emit(type);
     //this.$dispatch('ratingtype.select', type);
   }
 
@@ -52,6 +56,7 @@ export class RatingselectComponent implements OnInit, OnChanges {
     }
     console.log(8787);
     this.onlyContent = !this.onlyContent;
+    this.contentToggle.emit(this.onlyContent);
     //this.$dispatch('content.toggle', this.onlyContent);
   }
 

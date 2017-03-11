@@ -49,15 +49,11 @@ export class HomeComponent implements OnInit, OnChanges, AfterViewChecked {
       goods => {
         this.goods = goods;
         this.allowInitScroll = true;
-        this.selectFood = goods[0].foods[0];
-        console.log(111);
 
-        //let scroll =new BScroll(this.bscroll.nativeElement);
       },
       error => console.log(error)
     )
 
-    //this.bscroll.nativeElement.style.backgroundColor = 'yellow';
   }
 
   ngAfterViewChecked() {

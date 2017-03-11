@@ -20,7 +20,7 @@ export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterCon
   private selectType: number;
   private onlyContent: boolean;
   private desc: object = { all: '全部', positive: '推荐', negative: '吐槽' };
-  private scroll:any;
+  private scroll: any;
 
   private showFlag: string;
 
@@ -34,6 +34,7 @@ export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterCon
   }
 
   ngOnInit() {
+    console.log(this.food);
     this.selectType = ALL;
     this.onlyContent = true;
     //this.desc = { all: '全部', positive: '推荐', negative: '吐槽' };
@@ -43,7 +44,10 @@ export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterCon
   }
 
   ngAfterContentChecked() {
-
+    if (this.allowInitScroll) {
+      this._initScroll();
+      this.allowInitScroll = false;
+    }
   }
 
   _initScroll() {
@@ -77,6 +81,27 @@ export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterCon
 
   selectFoods() {
     this.selectFoodsEmit.emit();
+  }
+
+  needShow(type?: number, text?: string) {
+    if (this.onlyContent && !text) {
+      return false;
+    }
+    if (this.selectType == ALL) {
+      return true;
+    } else {
+      return this.selectType == type;
+    }
+  }
+
+  onToggleContent(onlyCon: boolean) {
+    this.onlyContent = onlyCon;
+    this.allowInitScroll = true;
+  }
+
+  onSelectType(type: number) {
+    this.selectType = type;
+    this.allowInitScroll = true;
   }
 
 }
