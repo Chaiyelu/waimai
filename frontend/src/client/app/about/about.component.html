@@ -1,12 +1,28 @@
-<p>Angular 2 Seed is a starter project that implements best practices in coding, building and testing Angular 2 apps.</p>
-
-<h2>Features</h2>
-<ul>
-  <li>Ready to go, statically typed build system using Gulp for working with TypeScript.</li>
-  <li>Production and development builds.</li>
-  <li>Sample unit tests with Jasmine and Karma including code coverage via Istanbul.</li>
-  <li>End-to-end tests with Protractor.</li>
-  <li>Development server with live reload.</li>
-  <li>TypeScript definition management using Types.</li>
-  <li>Basic Service Worker, which implements "Cache then network strategy".</li>
-</ul>
+<div class="ratings" v-el:ratings>
+    <div class="ratings-content">
+        <div class="overview">
+            <div class="overview-left">
+                <h1 class="score">{{seller.score}}</h1>
+                <div class="title">综合评分</div>
+                <div class="rank">高于周边商家{{seller.rankRate}}%</div>
+            </div>
+            <div class="overview-right">
+                <div class="score-wrapper">
+                    <span class="title">服务态度</span>
+                    <wm-plugins-star [size]="36" [score]="seller.serviceScore" class="star"></wm-plugins-star>
+                    <span class="score">{{seller.serviceScore}}</span>
+                </div>
+                <div class="score-wrapper">
+                    <span class="title">商品评分</span>
+                    <wm-plugins-star [size]="36" [score]="seller.foodScore" class="star"></wm-plugins-star>
+                    <span class="score">{{seller.foodScore}}</span>
+                </div>
+                <div class="delivery-wrapper">
+                    <span class="title">送达时间</span>
+                    <span class="delivery">{{seller.deliveryTime}}分钟</span>
+                </div>
+            </div>
+        </div>
+        <wm-split></wm-split>
+    </div>
+</div>

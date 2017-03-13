@@ -1,29 +1,79 @@
 :host {
-  font-size: 0;
+    font-size: 0;
 }
-:host.star-48 {
 
-}
+:host.star-48 {}
 
 .star-item {
-  display: inline-block;
-  background-repeat: no-repeat;
+    display: inline-block;
+    background-repeat: no-repeat;
 }
+
 .star-48 .star-item {
-  width: 20px;
-  height: 20px;
-  margin-right: 22px;
-  background-size: 20px 20px !important;
+    width: 20px;
+    height: 20px;
+    margin-right: 22px;
+    background-size: 20px 20px !important;
 }
+
 .star-48 .star-item:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
+
 .star-48 .star-item.on {
-  background: url('./img/star48_on@2x.png');
+    background: url('./img/star48_on@2x.png');
 }
+
 .star-48 .star-item.half {
-  background: url('./img/star48_half@2x.png');
+    background: url('./img/star48_half@2x.png');
 }
+
 .star-48 .star-item.off {
-  background: url('./img/star48_off@2x.png');
+    background: url('./img/star48_off@2x.png');
+}
+
+.star-36 .star-item {
+    width: 15px;
+    height: 15px;
+    margin-right: 6px;
+    background-size: 15px 15px !important;
+}
+
+.star-36 .star-item:last-child {
+    margin-right: 0;
+}
+
+.star-36 .star-item.on {
+    background: url('./img/star36_on@2x.png');
+}
+
+.star-36 .star-item.half {
+    background: url('./img/star36_half@2x.png');
+}
+
+.star-36 .star-item.off {
+    background: url('./img/star36_off@2x.png');
+}
+
+.star-22 .star-item {
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+    background-size: 10px 10px !important;
+}
+
+.star-24 .star-item:last-child {
+    margin-right: 0;
+}
+
+.star-24 .star-item.on {
+    background: url('./img/star24_on@2x.png');
+}
+
+.star-24 .star-item.half {
+    background: url('./img/star24_half@2x.png');
+}
+
+.star-24 .star-item.off {
+    background: url('./img/star24_off@2x.png');
 }

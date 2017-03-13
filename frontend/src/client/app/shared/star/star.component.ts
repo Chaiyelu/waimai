@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, OnChanges} from '@angular/core';
 
 const LENGTH = 5;
 const CLS_ON = 'on';
@@ -12,7 +12,7 @@ const CLS_OFF = 'off';
   styleUrls: ['star.component.css']
 })
 
-export class StarComponent implements OnInit{
+export class StarComponent implements OnInit, OnChanges{
   @Input() size: number;
   @Input() score: number;
   private itemClasses: String[];
@@ -21,11 +21,19 @@ export class StarComponent implements OnInit{
     return 'star-' +this.size;
   }
 
-  ngOnInit(){
+  ngOnChanges(){
+    /**
+     * 如果输入属性是父组件中异步请求过来的数据时
+     * 必须在ngOnchanges()做监听，不能在ngOninit(),不然会获取不到数据
+     */
     this.itemClasses = this.setClasses();
   }
 
+  ngOnInit(){
+  }
+
   setClasses(){
+    console.log(this.score);
     let result:String[] = [];
     let scroe = Math.floor(this.score * 2) / 2;
     let hasDecimal = scroe % 1 !==0;
