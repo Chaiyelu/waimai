@@ -22,7 +22,6 @@ export class RatingselectComponent implements OnInit, OnChanges {
   private ratingsnt: Array<any>;
 
   constructor() {
-    console.log(this.ratings);
     this.onlyContent = false;
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, AfterViewInit, AfterContentChecked.Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import { Component, OnChanges, OnInit, AfterViewInit, AfterViewChecked, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { flyInRight, flyShowRight } from '../../core/animations/fly-in';
 import * as BScroll from 'better-scroll/build/bscroll';
 
@@ -12,7 +12,7 @@ const ALL = 2;
   animations: [flyInRight, flyShowRight]
 })
 
-export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterContentChecked {
+export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterViewChecked {
   @Input() food: object;
   @Output() selectFoodsEmit = new EventEmitter();
   @ViewChild('fooddetail') foodDetail: ElementRef;
@@ -43,7 +43,7 @@ export class FoodComponent implements OnChanges, OnInit, AfterViewInit, AfterCon
   ngAfterViewInit() {
   }
 
-  ngAfterContentChecked() {
+  ngAfterViewChecked() {
     if (this.allowInitScroll) {
       this._initScroll();
       this.allowInitScroll = false;

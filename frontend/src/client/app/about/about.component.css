@@ -88,3 +88,96 @@
     font-size: 12px;
     color: rgb(147, 153, 159);
 }
+
+.rating-wrapper {
+    padding: 0 18px;
+}
+
+.rating-wrapper .rating-item {
+    display: flex;
+    padding: 18px 0;
+    border-bottom: 1px solod rgba(7, 17, 27, 0.1);
+}
+
+.rating-wrapper .rating-item .avatar {
+    flex: 0 0 28px;
+    width: 28px;
+    margin-right: 12px;
+}
+
+.rating-wrapper .rating-item .avatar img {
+    border-radius: 50%;
+}
+
+.rating-wrapper .rating-item .content {
+    position: relative;
+    flex: 1;
+}
+
+.rating-wrapper .rating-item .content .name {
+    margin-bottom: 4px;
+    line-height: 12px;
+    font-size: 10px;
+    color: rgb(7, 17, 27);
+}
+
+.rating-wrapper .rating-item .content .star-wrapper {
+    margin-bottom: 6px;
+    font-size: 0;
+}
+
+.rating-wrapper .rating-item .content .star-wrapper .star {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: top;
+}
+
+.rating-wrapper .rating-item .content .star-wrapper .delivery {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 12px;
+    font-size: 10px;
+    color: rgb(147, 153, 159);
+}
+
+.rating-wrapper .rating-item .content .text {
+    margin-bottom: 8px;
+    line-height: 18px;
+    color: rgb(7, 17, 27);
+    font-size: 12px;
+}
+
+.rating-wrapper .rating-item .content .recommend {
+    line-height: 16px;
+    font-size: 0;
+}
+
+.rating-wrapper .rating-item .content .recommend .fa-thumbs-up,
+.fa-thumbs-down,
+.item {
+    display: inline-block;
+    margin: 0 8px 4px 0;
+    font-size: 9px;
+}
+
+.rating-wrapper .rating-item .content .recommend .fa-thumbs-up,
+.fa-thumbs-down {
+    color: rgb(0, 160, 220);
+}
+
+.rating-wrapper .rating-item .content .recommend .item {
+    padding: 0 6px;
+    border: 1px solid rgba(7, 17, 27, 0.1);
+    border-radius: 1px;
+    color: rgb(147, 153, 159);
+    background: #fff;
+}
+
+.rating-wrapper .rating-item .content .time {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 12px;
+    font-size: 10px;
+    color: rgb(147, 153, 159);
+}
